@@ -13,7 +13,7 @@ source:
   sha256: 68a202ebfc62647495074a190a115b629e84c56d74d3017ccb43e56a4b9b83f6  # [win]
 
 build:
-  number: 1
+  number: 2
   skip: true                             # [not py27]
   detect_binary_files_with_prefix: true  # [unix]
 
@@ -22,10 +22,10 @@ requirements:
     - toolchain
     - pcre          # [unix]
     - python        # [unix]
-    - boost         # [unix]
+    - boost 1.62.*         # [unix]
   run:
     - pcre          # [unix]
-    - boost         # [unix]
+    - boost 1.62.*         # [unix]
 
 test:
   commands:
