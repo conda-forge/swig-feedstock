@@ -22,10 +22,10 @@ requirements:
     - toolchain
     - pcre          # [unix]
     - python        # [unix]
-    - boost         # [unix]
+    - boost 1.62.*         # [unix]
   run:
     - pcre          # [unix]
-    - boost         # [unix]
+    - boost 1.62.*         # [unix]
 
 test:
   commands:
