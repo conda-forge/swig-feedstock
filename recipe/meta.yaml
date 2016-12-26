@@ -1,31 +1,30 @@
-{% set version = "3.0.10" %}
+{% set version = "3.0.8" %}
 
 package:
   name: swig
   version: {{ version }}
 
 source:
-  fn: swig-{{ version }}.tar.gz                                             # [unix]
-  url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz    # [unix]
-  sha256: 2939aae39dec06095462f1b95ce1c958ac80d07b926e48871046d17c0094f44c  # [unix]
+  fn: swig-{{ version }}.tar.gz                                             # [not win]
+  url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz    # [not win]
+  sha256: 58a475dbbd4a4d7075e5fe86d4e54c9edde39847cdb96a3053d87cb64a23a453  # [not win]
   fn: swigwin-{{ version }}.zip                                             # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip    # [win]
-  sha256: 68a202ebfc62647495074a190a115b629e84c56d74d3017ccb43e56a4b9b83f6  # [win]
+  sha256: e5fe65ae9b145ea3c00172abdb527f2d3458e8cc928e25db984b2da1b00a2a04  # [win]
 
 build:
-  number: 2
-  skip: true                             # [not py27]
-  detect_binary_files_with_prefix: true  # [unix]
+  number: 0
+  detect_binary_files_with_prefix: True  # [not win]
 
 requirements:
   build:
     - toolchain
-    - pcre          # [unix]
-    - python        # [unix]
-    - boost         # [unix]
+    - pcre  # [not win]
+    - python  # [not win]
+    - boost  # [not win]
   run:
-    - pcre          # [unix]
-    - boost         # [unix]
+    - pcre  # [not win]
+    - boost  # [not win]
 
 test:
   commands:
@@ -33,11 +32,12 @@ test:
 
 about:
   home: http://www.swig.org/
-  license: GPL 3
-  summary: C/C++ parser code generator
+  license: GPL-3.0
+  summary: 'C/C++ parser code generator.'
 
 extra:
   recipe-maintainers:
     - jakirkham
     - jschueller
     - msarahan
+    - ocefpaf
