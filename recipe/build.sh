@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# FIXME: This is a hack to make sure the environment is activated.
-# The reason this is required is due to the conda-build issue
-# mentioned below.
-#
-# https://github.com/conda/conda-build/issues/910
-#
-source activate "${CONDA_DEFAULT_ENV}"
-
 ./configure \
              --prefix="${PREFIX}" \
              --with-pcre-prefix="${PREFIX}" \
@@ -35,6 +27,6 @@ source activate "${CONDA_DEFAULT_ENV}"
              --without-r \
              --without-go \
              --without-d
-make
+make -j${CPU_COUNT}
 #make check
 make install
