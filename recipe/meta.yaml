@@ -1,31 +1,31 @@
-{% set version = "3.0.10" %}
+{% set version = "3.0.11" %}
 
 package:
   name: swig
   version: {{ version }}
 
 source:
-  fn: swig-{{ version }}.tar.gz                                             # [unix]
-  url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz    # [unix]
-  sha256: 2939aae39dec06095462f1b95ce1c958ac80d07b926e48871046d17c0094f44c  # [unix]
-  fn: swigwin-{{ version }}.zip                                             # [win]
-  url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip    # [win]
-  sha256: 68a202ebfc62647495074a190a115b629e84c56d74d3017ccb43e56a4b9b83f6  # [win]
+  fn: swig-{{ version }}.tar.gz  # [unix]
+  url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
+  sha256: d9031d531d7418829a54d0d51c4ed9007016b213657ec70be44031951810566e  # [unix]
+  fn: swigwin-{{ version }}.zip  # [win]
+  url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
+  sha256: f3bb6e139aff95be0100417adb15879d6132fa940efc8b16dfec1351f58f42a2  # [win]
 
 build:
-  number: 2
-  skip: true                             # [not py27]
+  number: 0
+  skip: true  # [not py27]
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
   build:
     - toolchain
-    - pcre          # [unix]
-    - python        # [unix]
-    - boost         # [unix]
+    - pcre  # [unix]
+    - python  # [unix]
+    - boost  # [unix]
   run:
-    - pcre          # [unix]
-    - boost         # [unix]
+    - pcre  # [unix]
+    - boost  # [unix]
 
 test:
   commands:
