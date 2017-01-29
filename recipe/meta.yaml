@@ -1,4 +1,4 @@
-{% set version = "3.0.11" %}
+{% set version = "3.0.12" %}
 
 package:
   name: swig
@@ -7,10 +7,10 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: d9031d531d7418829a54d0d51c4ed9007016b213657ec70be44031951810566e  # [unix]
+  sha256: 7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
-  sha256: f3bb6e139aff95be0100417adb15879d6132fa940efc8b16dfec1351f58f42a2  # [win]
+  sha256: 21ce6cbe297a56b697ef6e7e92a83e75ca41dedc87e48282ab444591986c35f5  # [win]
 
 build:
   number: 0
@@ -22,10 +22,10 @@ requirements:
     - toolchain
     - pcre  # [unix]
     - python  # [unix]
-    - boost  # [unix]
+    - boost-cpp  # [unix]
   run:
     - pcre  # [unix]
-    - boost  # [unix]
+    - boost-cpp  # [unix]
 
 test:
   commands:
