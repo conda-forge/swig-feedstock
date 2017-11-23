@@ -1,12 +1,13 @@
 #!/bin/bash
 
-./configure \
+# Full paths break make check
+export CC=$(basename ${CC})
+export CXX=$(basename ${CXX})
+
+"${SRC_DIR}"/configure \
              --prefix="${PREFIX}" \
              --with-pcre-prefix="${PREFIX}" \
-             --with-boost="${PREFIX}" \
-             --with-tcl="${PREFIX}" \
-             --with-tclconfig="${PREFIX}/lib" \
              --without-alllang
-make -j${CPU_COUNT}
-#make check
+make -j${CPU_COUNT} ${VERBOSE_AT}
+make check
 make install
