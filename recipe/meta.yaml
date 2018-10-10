@@ -21,6 +21,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - bison # [unix]
+    - make  # [unix]
+  host:
     - pcre  # [unix]
   run:      # [unix]
     - pcre  # [unix]
