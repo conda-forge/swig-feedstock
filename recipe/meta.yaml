@@ -1,4 +1,4 @@
-{% set version = "3.0.12" %}
+{% set version = "4.0.0" %}
 
 package:
   name: swig
@@ -7,13 +7,13 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: 7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d  # [unix]
+  sha256: e8a39cd6437e342cdcbd5af27a9bf11b62dc9efec9248065debcb8276fcbb925  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
-  sha256: 21ce6cbe297a56b697ef6e7e92a83e75ca41dedc87e48282ab444591986c35f5  # [win]
+  sha256: 1391aecad92e365b960eb1a1db3866ca1beee61b3395c182298edbf323d1695a  # [win]
 
 build:
-  number: 1003
+  number: 0
   skip: true  # [not py27]
   detect_binary_files_with_prefix: true  # [unix]
 
