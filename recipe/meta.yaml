@@ -29,7 +29,7 @@ requirements:
 
 test:
   commands:
-    - swig -help
+    - swig  -help
 
 about:
   home: http://www.swig.org/
