@@ -14,7 +14,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [not py27]
+  skip: true  # [not py27 and not win]
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
