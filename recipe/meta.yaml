@@ -14,13 +14,13 @@ source:
 
 build:
   number: 0
-  skip: true  # [not py27 and not win]
+  skip: true  # [not py27 and unix]
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}  # [unix]
+    - {{ compiler('cxx') }}  # [unix]
   host:
     - pcre  # [unix]
     - python  # [unix]
