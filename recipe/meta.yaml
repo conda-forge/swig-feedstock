@@ -21,6 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('cxx') }}  # [unix]
+    - make
   host:
     - pcre  # [unix]
     - python  # [unix]
