@@ -13,7 +13,7 @@ source:
   sha256: 8c504241ad4fb4f8ba7828deaef1ea0b4972e86eb128b46cb75efabf19ab4745  # [win]
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not py27 and unix]
   detect_binary_files_with_prefix: true  # [unix]
 
