@@ -20,7 +20,7 @@ requirements:
   build:
     - {{ compiler('c') }}  # [unix]
     - {{ compiler('cxx') }}  # [unix]
-    - make
+    - make  # [unix]
   host:
     - pcre  # [unix]
   run:
