@@ -14,7 +14,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [not py27 and unix]
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
@@ -24,7 +23,6 @@ requirements:
     - make
   host:
     - pcre  # [unix]
-    - python  # [unix]
   run:
     - pcre  # [unix]
 
@@ -34,7 +32,8 @@ test:
 
 about:
   home: http://www.swig.org/
-  license: GPL 3
+  license: GPL-3.0
+  license_family: GPL
   license_file: LICENSE
   summary: C/C++ parser code generator
 
