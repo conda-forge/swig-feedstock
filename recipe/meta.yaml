@@ -1,4 +1,4 @@
-{% set version = "4.0.1" %}
+{% set version = "4.0.2" %}
 
 package:
   name: swig
@@ -7,14 +7,13 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: 7a00b4d0d53ad97a14316135e2d702091cd5f193bb58bcfcd8bc59d41e7887a9  # [unix]
+  sha256: d53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
-  sha256: 8c504241ad4fb4f8ba7828deaef1ea0b4972e86eb128b46cb75efabf19ab4745  # [win]
+  sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
 
 build:
   number: 0
-  skip: true  # [not py27 and unix]
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
@@ -24,7 +23,6 @@ requirements:
     - make
   host:
     - pcre  # [unix]
-    - python  # [unix]
   run:
     - pcre  # [unix]
 
@@ -34,7 +32,8 @@ test:
 
 about:
   home: http://www.swig.org/
-  license: GPL 3
+  license: GPL-3.0-or-later
+  license_family: GPL
   license_file: LICENSE
   summary: C/C++ parser code generator
 
