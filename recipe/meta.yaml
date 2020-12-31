@@ -11,9 +11,11 @@ source:
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
   sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
+  patches:
+    - python_3.9_support.patch
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
