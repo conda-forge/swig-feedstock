@@ -1,4 +1,4 @@
-{% set version = "3.0.12" %}
+{% set version = "4.0.2" %}
 
 package:
   name: swig
@@ -7,10 +7,10 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: 7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d  # [unix]
+  sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
-  sha256: 21ce6cbe297a56b697ef6e7e92a83e75ca41dedc87e48282ab444591986c35f5  # [win]
+  sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
 
 build:
   number: 3
