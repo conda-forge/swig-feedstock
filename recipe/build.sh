@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Get an updated config.sub and config.guess
+cp -r ${BUILD_PREFIX}/share/libtool/build-aux/config.* ./Tools/config
+
 # Full paths break make check
 export CC=$(basename ${CC})
 export CXX=$(basename ${CXX})
