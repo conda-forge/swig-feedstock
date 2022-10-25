@@ -11,9 +11,6 @@ source:
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
   sha256: 4c3c59bb86ba628683d6253b011291af769a2bd83b3d996db36a021b15e3b179  # [win]
-  patches:
-    # https://github.com/swig/swig/commit/9c50887daa2b44251e77be8123c63df238034cf5
-    - python_3.9_support.patch
 
 build:
   number: 0
@@ -26,9 +23,9 @@ requirements:
     - {{ compiler('cxx') }}  # [unix]
     - make  # [unix]
   host:
-    - pcre  # [unix]
+    - pcre2  # [unix]
   run:
-    - pcre  # [unix]
+    - pcre2  # [unix]
 
 test:
   commands:
