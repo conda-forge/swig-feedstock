@@ -10,14 +10,14 @@ source:
   sha256: d6a9a8094e78f7cfb6f80a73cc271e1fe388c8638ed22668622c2c646df5bb3d
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
   build:
     - gnuconfig  # [unix]
-    - {{ compiler('c') }}  # [unix]
-    - {{ compiler('cxx') }}  # [unix]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - make  # [unix]
     - cmake  # [win]
     - winflexbison  # [win]
