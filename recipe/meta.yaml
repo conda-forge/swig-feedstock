@@ -1,4 +1,4 @@
-{% set version = "4.0.2" %}
+{% set version = "4.1.0" %}
 
 package:
   name: swig
@@ -7,16 +7,13 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: d53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc  # [unix]
+  sha256: d6a9a8094e78f7cfb6f80a73cc271e1fe388c8638ed22668622c2c646df5bb3d  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
-  sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
-  patches:
-    # https://github.com/swig/swig/commit/9c50887daa2b44251e77be8123c63df238034cf5
-    - python_3.9_support.patch
+  sha256: 4c3c59bb86ba628683d6253b011291af769a2bd83b3d996db36a021b15e3b179  # [win]
 
 build:
-  number: 2
+  number: 0
   detect_binary_files_with_prefix: true  # [unix]
 
 requirements:
@@ -26,9 +23,9 @@ requirements:
     - {{ compiler('cxx') }}  # [unix]
     - make  # [unix]
   host:
-    - pcre  # [unix]
+    - pcre2  # [unix]
   run:
-    - pcre  # [unix]
+    - pcre2  # [unix]
 
 test:
   commands:
