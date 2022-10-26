@@ -4,7 +4,7 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./Tools/config
 
 ./configure \
              --prefix="${PREFIX}" \
-             --with-pcre-prefix="${PREFIX}" \
+             --with-pcre2-prefix="${PREFIX}" \
              --without-alllang
 make -j${CPU_COUNT}
 make install
