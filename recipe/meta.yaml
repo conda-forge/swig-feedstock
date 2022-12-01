@@ -8,9 +8,6 @@ source:
   fn: swig-{{ version }}.tar.gz
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz
   sha256: 2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b
-  patches:
-    # fixes -swiglib path
-    - swiglib.patch
 
 build:
   number: 0
