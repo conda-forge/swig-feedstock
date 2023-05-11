@@ -1,11 +1,11 @@
-About swig
-==========
+About swig-feedstock
+====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/swig-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.swig.org/
 
 Package license: GPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/swig-feedstock/blob/main/LICENSE.txt)
 
 Summary: C/C++ parser code generator
 
