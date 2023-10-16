@@ -1,41 +1,41 @@
-{% set version = "4.0.2" %}
+{% set name = "swig" %}
+{% set version = "4.1.1" %}
 
 package:
-  name: swig
+  name: {{ name }}
   version: {{ version }}
 
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
-    
-  url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz  # [unix]
-  sha256: d53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc  # [unix]
+  url: http://prdownloads.sourceforge.net/{{ name }}/{{ name }}-{{ version }}.tar.gz  # [unix]
+  sha256: 2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
-  url: http://prdownloads.sourceforge.net/swig/swigwin-{{ version }}.zip  # [win]
+  url: http://prdownloads.sourceforge.net/{{ name }}/{{ name }}win-{{ version }}.zip  # [win]
   sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
 
 build:
-  number: 4
+  number: 0
   detect_binary_files_with_prefix: True  # [unix]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - bison # [unix]
-    - make  # [unix]
+    - make     # [unix]
     - libtool  # [unix]
-  host:
-    - pcre  # [unix]
-  run:      # [unix]
-    - pcre  # [unix]
+  host:        # [unix]
+    - pcre2    # [unix]
+  run:         # [unix]
+    - pcre2    # [unix]
 
 test:
   commands:
     - swig -help
+    - swig -swiglib
 
 about:
-  home: http://www.swig.org/
-  license: GPL 3
+  home: https://www.swig.org/
+  license: GPL-3.0-or-later
   license_file: LICENSE
   license_family: GPL
   summary: C/C++ parser code generator
@@ -48,7 +48,7 @@ about:
     customization features that let you tailor the wrapping process to suit
     your application.
   dev_url: https://github.com/swig/swig
-  doc_url: http://www.swig.org/Doc3.0/index.html
+  doc_url: https://www.swig.org/doc.html
 
 extra:
   recipe-maintainers:
