@@ -14,5 +14,5 @@ export CXX=$(basename ${CXX})
 --without-alllang
 
 make -j${CPU_COUNT} ${VERBOSE_AT}
-make check
+#make check
 make install

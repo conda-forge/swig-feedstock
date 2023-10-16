@@ -11,7 +11,7 @@ source:
   sha256: 2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
   url: http://prdownloads.sourceforge.net/{{ name }}/{{ name }}win-{{ version }}.zip  # [win]
-  sha256: daadb32f19fe818cb9b0015243233fc81584844c11a48436385e87c050346559  # [win]
+  sha256: 2ec3107e24606db535d77ef3dbf246dc6eccbf1d5c868dce365d7f7fb19a1a51  # [win]
 
 build:
   number: 0
@@ -25,6 +25,7 @@ requirements:
     - libtool  # [unix]
   host:        # [unix]
     - pcre2    # [unix]
+    - zlib     # [unix]
   run:         # [unix]
     - pcre2    # [unix]
 
