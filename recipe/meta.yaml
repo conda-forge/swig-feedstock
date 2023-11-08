@@ -59,9 +59,4 @@ extra:
     - msarahan
     - ocefpaf
 
-  anaconda-services:
-    ref: https://anaconda.zendesk.com/agent/tickets/42154
-    reason: Built for customer - see ticket
-    recipe-maintainers:
-      - bkreider
 
