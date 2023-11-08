@@ -7,10 +7,10 @@ package:
 
 source:
   fn: swig-{{ version }}.tar.gz  # [unix]
-  url: http://prdownloads.sourceforge.net/{{ name }}/{{ name }}-{{ version }}.tar.gz  # [unix]
+  url: https://prdownloads.sourceforge.net/{{ name }}/{{ name }}-{{ version }}.tar.gz  # [unix]
   sha256: 2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b  # [unix]
   fn: swigwin-{{ version }}.zip  # [win]
-  url: http://prdownloads.sourceforge.net/{{ name }}/{{ name }}win-{{ version }}.zip  # [win]
+  url: https://prdownloads.sourceforge.net/{{ name }}/{{ name }}win-{{ version }}.zip  # [win]
   sha256: 2ec3107e24606db535d77ef3dbf246dc6eccbf1d5c868dce365d7f7fb19a1a51  # [win]
 
 build:
@@ -58,3 +58,10 @@ extra:
     - mingwandroid
     - msarahan
     - ocefpaf
+
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/42154
+    reason: Built for customer - see ticket
+    recipe-maintainers:
+      - bkreider
+
