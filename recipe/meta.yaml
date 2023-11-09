@@ -34,6 +34,16 @@ about:
   license_family: GPL
   license_file: LICENSE
   summary: C/C++ parser code generator
+  description: |
+    SWIG is an interface compiler that connects programs written in C and C++
+    with scripting languages such as Perl, Python, Ruby, and Tcl. It works by
+    taking the declarations found in C/C++ header files and using them to
+    generate the wrapper code that scripting languages need to access the
+    underlying C/C++ code. In addition, SWIG provides a variety of
+    customization features that let you tailor the wrapping process to suit
+    your application.
+  dev_url: https://github.com/swig/swig
+  doc_url: https://www.swig.org/doc.html
 
 extra:
   recipe-maintainers:
