@@ -9,6 +9,19 @@ Package license: GPL-3.0-or-later
 
 Summary: C/C++ parser code generator
 
+Development: https://github.com/swig/swig
+
+Documentation: https://www.swig.org/doc.html
+
+SWIG is an interface compiler that connects programs written in C and C++
+with scripting languages such as Perl, Python, Ruby, and Tcl. It works by
+taking the declarations found in C/C++ header files and using them to
+generate the wrapper code that scripting languages need to access the
+underlying C/C++ code. In addition, SWIG provides a variety of
+customization features that let you tailor the wrapping process to suit
+your application.
+
+
 Current build status
 ====================
 
@@ -149,7 +162,7 @@ available continuous integration services. Thanks to the awesome service provide
 [CircleCI](https://circleci.com/), [AppVeyor](https://www.appveyor.com/),
 [Drone](https://cloud.drone.io/welcome), and [TravisCI](https://travis-ci.com/)
 it is possible to build and upload installable packages to the
-[conda-forge](https://anaconda.org/conda-forge) [Anaconda-Cloud](https://anaconda.org/)
+[conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
 To manage the continuous integration and simplify feedstock maintenance
