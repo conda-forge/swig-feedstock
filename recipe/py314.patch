@@ -1,0 +1,69 @@
+From 50e1cc8bc0d090164762ec166439f8b0f3855308 Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Thu, 10 Apr 2025 17:22:15 +0200
+Subject: [PATCH 1/4] Python: Handle __package__ removal
+
+Closes #2967
+---
+ Doc/Manual/Python.html    | 6 +++---
+ Source/Modules/python.cxx | 8 +++++---
+ 2 files changed, 8 insertions(+), 6 deletions(-)
+
+diff --git a/Source/Modules/python.cxx b/Source/Modules/python.cxx
+index 86daf131c8b..a71fc3cdb25 100644
+--- a/Source/Modules/python.cxx
++++ b/Source/Modules/python.cxx
+@@ -703,20 +703,22 @@ class PYTHON:public Language {
+ 	 * onwards (implicit relative imports raised a DeprecationWarning in 2.6,
+ 	 * and fail in 2.7 onwards).
+ 	 *
+-	 * First check for __package__ which is available from 2.6 onwards, see PEP366.
++	 * First check for __spec__.parent which is available from 3.4 onwards,
++	 * see https://docs.python.org/3/reference/import.html#spec. If not,
++	 * check for __package__, which was set before 3.14.
+ 	 * Next try determine the shadow wrapper's package based on the __name__ it
+ 	 * was given by the importer that loaded it.
+ 	 * If the module is in a package, load the low-level C/C++ module from the
+ 	 * same package, otherwise load it as a global module.
+ 	 */
+         Printv(default_import_code, "# Import the low-level C/C++ module\n", NULL);
+-        Printv(default_import_code, "if __package__ or \".\" in __name__:\n", NULL);
++        Printv(default_import_code, "if getattr(globals().get(\"__spec__\"), \"parent\", None) or globals().get(\"__package__\") or \".\" in __name__:\n", NULL);
+         Printv(default_import_code, tab4, "from . import ", module, "\n", NULL);
+         Printv(default_import_code, "else:\n", NULL);
+         Printv(default_import_code, tab4, "import ", module, "\n", NULL);
+       } else {
+         Printv(default_import_code, "# Pull in all the attributes from the low-level C/C++ module\n", NULL);
+-        Printv(default_import_code, "if __package__ or \".\" in __name__:\n", NULL);
++        Printv(default_import_code, "if getattr(globals().get(\"__spec__\"), \"parent\", None) or globals().get(\"__package__\") or \".\" in __name__:\n", NULL);
+         Printv(default_import_code, tab4, "from .", module, " import *\n", NULL);
+         Printv(default_import_code, "else:\n", NULL);
+         Printv(default_import_code, tab4, "from ", module, " import *\n", NULL);
+
+From 3bfdf13c602f877860a9949ba751a5b5a9ba70aa Mon Sep 17 00:00:00 2001
+From: Julien Schueller <schueller@phimeca.com>
+Date: Thu, 10 Apr 2025 18:35:25 +0200
+Subject: [PATCH 2/4] Python: Add ht_token
+
+---
+ Source/Modules/python.cxx | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Source/Modules/python.cxx b/Source/Modules/python.cxx
+index a71fc3cdb25..3070a94face 100644
+--- a/Source/Modules/python.cxx
++++ b/Source/Modules/python.cxx
+@@ -4374,6 +4374,11 @@ class PYTHON:public Language {
+     Printv(f, "#if PY_VERSION_HEX >= 0x030b0000\n", NIL);
+     printSlot(f, getSlot(n, "feature:python:_ht_tpname"), "_ht_tpname", "char *");
+ 
++    // void *ht_token;
++    Printv(f, "#if PY_VERSION_HEX >= 0x030e0000\n", NIL);
++    printSlot(f, getSlot(n, "feature:python:ht_token"), "ht_token", "void *");
++    Printv(f, "#endif\n", NIL);
++
+     // struct _specialization_cache _spec_cache;
+     Printf(f, "  {\n");
+     printSlot(f, getSlot(n, "feature:python:getitem"), "getitem", "PyObject *");
+
+

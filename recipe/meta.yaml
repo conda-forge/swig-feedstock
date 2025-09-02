@@ -8,9 +8,11 @@ source:
   fn: swig-{{ version }}.tar.gz
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz
   sha256: 44fc829f70f1e17d635a2b4d69acab38896699ecc24aa023e516e0eabbec61b8
+  patches:
+    - py314.patch
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
