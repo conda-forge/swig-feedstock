@@ -13,7 +13,6 @@ source:
 build:
   number: 0
 
-
 outputs:
   - name: swig-abi
     version: {{ abi_version }}
@@ -26,7 +25,7 @@ outputs:
         - swig-abi =={{ abi_version }}
     test:
       requires:
-        - python =={{ python_min }}  # not formally needed but reduces the build matrix
+        - python == {{ python_min }}
       source_files:
         - Lib/swigrun.swg
       files:
