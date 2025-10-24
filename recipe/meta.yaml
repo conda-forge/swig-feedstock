@@ -1,7 +1,8 @@
 {% set version = "4.4.0" %}
+{% set abi_version = "5" %}
 
 package:
-  name: swig
+  name: swig-split
   version: {{ version }}
 
 source:
@@ -12,22 +13,46 @@ source:
 build:
   number: 0
 
-requirements:
-  build:
-    - gnuconfig  # [unix]
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - make  # [unix]
-    - cmake  # [win]
-    - winflexbison  # [win]
-  host:
-    - pcre2
 
-test:
-  commands:
-    - swig -help
-    - swig -swiglib
+outputs:
+  - name: swig-abi
+    version: {{ abi_version }}
+    build:
+      noarch: generic
+      run_exports:
+        - swig-abi =={{ abi_version }}
+    requirements:
+      run_constrained:
+        - swig-abi =={{ abi_version }}
+    test:
+      requires:
+        - python
+      source_files:
+        - Lib/swigrun.swg
+      files:
+        - check_swig_runtime_version.py
+      commands:
+        - python check_swig_runtime_version.py {{ abi_version }}
+
+  - name: swig
+    version: {{ version }}
+    requirements:
+      build:
+        - gnuconfig  # [unix]
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
+        - make  # [unix]
+        - cmake  # [win]
+        - winflexbison  # [win]
+      host:
+        - pcre2
+      run_constrained:
+        - swig-abi =={{ abi_version }}
+    test:
+      commands:
+        - swig -help
+        - swig -swiglib
 
 about:
   home: http://www.swig.org/
@@ -52,3 +77,4 @@ extra:
     - jschueller
     - msarahan
     - ocefpaf
+    - beckermr
