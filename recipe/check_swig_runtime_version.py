@@ -3,7 +3,7 @@ import sys
 
 # copied from the pybind11 recipe w/ some changes
 # see https://github.com/conda-forge/pybind11-feedstock/blob/main/recipe/check_abi.py
-SRTV_RE = re.compile(r"#\s*define\s+SWIG_RUNTIME_VERSION\s+(\d+)")
+SRTV_RE = re.compile(r'#\s*define\s+SWIG_RUNTIME_VERSION\s+"?(\d+)"?')
 
 expected_swig_runtime_version = sys.argv[1]
 
