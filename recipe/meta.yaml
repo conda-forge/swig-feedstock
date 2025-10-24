@@ -26,7 +26,7 @@ outputs:
         - swig-abi =={{ abi_version }}
     test:
       requires:
-        - python
+        - python =={{ python_min }}  # not formally needed but reduces the build matrix
       source_files:
         - Lib/swigrun.swg
       files:
