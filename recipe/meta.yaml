@@ -35,9 +35,8 @@ outputs:
 
   - name: swig
     version: {{ version }}
-    build:
-      script: build_swig.sh  # [unix]
-      script: bld_swig.bat  # [win]
+    script: build_swig.sh  # [unix]
+    script: bld_swig.bat  # [win]
     requirements:
       build:
         - gnuconfig  # [unix]
