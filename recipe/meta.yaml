@@ -1,5 +1,5 @@
-{% set version = "4.4.0" %}
-{% set abi_version = "5" %}
+{% set version = "4.3.1" %}
+{% set abi_version = "4" %}
 
 package:
   name: swig-split
@@ -8,10 +8,12 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz
-  sha256: c3f8e5dcd68c18aa19847b33b0a1bb92f07e904c53ae9cf5ae4ff8727a72927e
+  sha256: 44fc829f70f1e17d635a2b4d69acab38896699ecc24aa023e516e0eabbec61b8
+  patches:
+    - py314.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: swig-abi
