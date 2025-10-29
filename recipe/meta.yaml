@@ -13,7 +13,7 @@ source:
     - py314.patch
 
 build:
-  number: 2
+  number: 4
 
 outputs:
   - name: swig-abi
