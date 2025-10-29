@@ -1,7 +1,8 @@
 {% set version = "4.4.0" %}
+{% set abi_version = "5" %}
 
 package:
-  name: swig
+  name: swig-split
   version: {{ version }}
 
 source:
@@ -10,24 +11,49 @@ source:
   sha256: c3f8e5dcd68c18aa19847b33b0a1bb92f07e904c53ae9cf5ae4ff8727a72927e
 
 build:
-  number: 0
+  number: 1
 
-requirements:
-  build:
-    - gnuconfig  # [unix]
-    - {{ compiler('c') }}
-    - {{ stdlib("c") }}
-    - {{ compiler('cxx') }}
-    - make  # [unix]
-    - cmake  # [win]
-    - winflexbison  # [win]
-  host:
-    - pcre2
+outputs:
+  - name: swig-abi
+    version: {{ abi_version }}
+    build:
+      noarch: generic
+      run_exports:
+        - swig-abi =={{ abi_version }}
+    requirements:
+      run_constrained:
+        - swig-abi =={{ abi_version }}
+    test:
+      requires:
+        - python =={{ python_min }}
+      source_files:
+        - Lib/swigrun.swg
+      files:
+        - check_swig_runtime_version.py
+      commands:
+        - python check_swig_runtime_version.py {{ abi_version }}
 
-test:
-  commands:
-    - swig -help
-    - swig -swiglib
+  - name: swig
+    version: {{ version }}
+    script: build_swig.sh  # [unix]
+    script: bld_swig.bat  # [win]
+    requirements:
+      build:
+        - gnuconfig  # [unix]
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
+        - make  # [unix]
+        - cmake  # [win]
+        - winflexbison  # [win]
+      host:
+        - pcre2
+      run_constrained:
+        - swig-abi =={{ abi_version }}
+    test:
+      commands:
+        - swig -help
+        - swig -swiglib
 
 about:
   home: http://www.swig.org/
@@ -47,8 +73,10 @@ about:
   doc_url: https://www.swig.org/doc.html
 
 extra:
+  feedstock-name: swig
   recipe-maintainers:
     - jakirkham
     - jschueller
     - msarahan
     - ocefpaf
+    - beckermr

@@ -95,6 +95,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-swig-green.svg)](https://anaconda.org/conda-forge/swig) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/swig.svg)](https://anaconda.org/conda-forge/swig) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/swig.svg)](https://anaconda.org/conda-forge/swig) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/swig.svg)](https://anaconda.org/conda-forge/swig) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-swig--abi-green.svg)](https://anaconda.org/conda-forge/swig-abi) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/swig-abi.svg)](https://anaconda.org/conda-forge/swig-abi) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/swig-abi.svg)](https://anaconda.org/conda-forge/swig-abi) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/swig-abi.svg)](https://anaconda.org/conda-forge/swig-abi) |
 
 Installing swig
 ===============
@@ -106,16 +107,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `swig` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `swig, swig-abi` can be installed with `conda`:
 
 ```
-conda install swig
+conda install swig swig-abi
 ```
 
 or with `mamba`:
 
 ```
-mamba install swig
+mamba install swig swig-abi
 ```
 
 It is possible to list all of the versions of `swig` available on your platform with `conda`:
@@ -210,6 +211,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@beckermr](https://github.com/beckermr/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jschueller](https://github.com/jschueller/)
 * [@msarahan](https://github.com/msarahan/)
