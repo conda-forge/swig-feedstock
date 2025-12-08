@@ -1,4 +1,4 @@
-{% set version = "4.4.0" %}
+{% set version = "4.4.1" %}
 {% set abi_version = "5" %}
 
 package:
@@ -8,10 +8,10 @@ package:
 source:
   fn: swig-{{ version }}.tar.gz
   url: http://prdownloads.sourceforge.net/swig/swig-{{ version }}.tar.gz
-  sha256: c3f8e5dcd68c18aa19847b33b0a1bb92f07e904c53ae9cf5ae4ff8727a72927e
+  sha256: 40162a706c56f7592d08fd52ef5511cb7ac191f3593cf07306a0a554c6281fcf
 
 build:
-  number: 2
+  number: 0
 
 outputs:
   - name: swig-abi
