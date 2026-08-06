@@ -1,5 +1,5 @@
 context:
-  version: "4.4.1"
+  version: "4.5.0"
   abi_version: "5"
 
 recipe:
@@ -8,7 +8,7 @@ recipe:
 
 source:
   url: https://prdownloads.sourceforge.net/swig/swig-${{ version }}.tar.gz
-  sha256: 40162a706c56f7592d08fd52ef5511cb7ac191f3593cf07306a0a554c6281fcf
+  sha256: 22ae0e887f8cca8031a325c67d005207653200b40e71edb3f88780e28e47d0ff
 
 build:
   number: 0
