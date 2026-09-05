@@ -11,6 +11,6 @@ cxx_compiler:
 pcre2:
 - '10.47'
 python_min:
-- '3.10'
+- '3.11'
 target_platform:
 - win-64
