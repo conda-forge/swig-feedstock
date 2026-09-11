@@ -11,7 +11,7 @@ source:
   sha256: 7fec50b27deddab5455a9633780b6341eddfb96215a7619e93a76eb27178f653
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -29,7 +29,9 @@ outputs:
           - python check_swig_runtime_version.py ${{ abi_version }}
         requirements:
           run:
-            - python ==${{ python_min }}
+            - if: target_platform == "win-arm64"
+              then: python >=3.14
+              else: python ==${{ python_min }}
         files:
           recipe:
             - check_swig_runtime_version.py
@@ -64,6 +66,14 @@ outputs:
       - script:
           - swig -help
           - swig -swiglib
+      - files:
+          recipe:
+            - smoke.i
+        script:
+          - swig -python -o smoke_wrap.c smoke.i
+          - if: win
+            then: if not exist smoke_wrap.c exit 1
+            else: test -s smoke_wrap.c
 
 about:
   homepage: http://www.swig.org/
