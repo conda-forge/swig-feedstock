@@ -66,14 +66,28 @@ outputs:
       - script:
           - swig -help
           - swig -swiglib
-      - files:
+          - if: win and arm64
+            then:
+              - cmake -S . -B test-build -G "NMake Makefiles" -DPython3_EXECUTABLE="%PREFIX%\python.exe" -DSWIG_EXECUTABLE="%LIBRARY_BIN%\swig.exe"
+              - cmake --build test-build
+              - set "PYTHONPATH=%CD%\test-build"
+              - python -c "import example; assert example.add(20, 22) == 42"
+              - dumpbin /headers "%LIBRARY_BIN%\swig.exe" | findstr /I /C:"AA64 machine (ARM64)"
+              - dumpbin /headers "test-build\_example.pyd" | findstr /I /C:"AA64 machine (ARM64)"
+        requirements:
+          run:
+            - if: win and arm64
+              then:
+                - ${{ compiler('c') }}
+                - ${{ stdlib("c") }}
+                - cmake
+                - python
+        files:
           recipe:
-            - smoke.i
-        script:
-          - swig -python -o smoke_wrap.c smoke.i
-          - if: win
-            then: if not exist smoke_wrap.c exit 1
-            else: test -s smoke_wrap.c
+            - if: win and arm64
+              then:
+                - CMakeLists.txt
+                - example.i
 
 about:
   homepage: http://www.swig.org/
