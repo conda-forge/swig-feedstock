@@ -68,7 +68,7 @@ outputs:
           - swig -swiglib
           - if: win and arm64
             then:
-              - cmake -S . -B test-build -G "NMake Makefiles" -DPython3_EXECUTABLE="%PREFIX%\python.exe" -DSWIG_EXECUTABLE="%LIBRARY_BIN%\swig.exe"
+              - cmake -S . -B test-build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="%PREFIX%\python.exe" -DSWIG_EXECUTABLE="%LIBRARY_BIN%\swig.exe"
               - cmake --build test-build
               - set "PYTHONPATH=%CD%\test-build"
               - python -c "import example; assert example.add(20, 22) == 42"
