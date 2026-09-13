@@ -4,4 +4,6 @@ cmake -G "NMake Makefiles" ^
   -DBISON_EXECUTABLE=%BUILD_PREFIX%\Library\bin\win_bison.exe ^
   . || goto :eof
 
+cmake --build . --config Release || goto :eof
+ctest --output-on-failure -C Release || goto :eof
 cmake --build . --config Release --target install || goto :eof
