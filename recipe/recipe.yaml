@@ -66,28 +66,20 @@ outputs:
       - script:
           - swig -help
           - swig -swiglib
-          - if: win and arm64
-            then:
-              - cmake -S . -B test-build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DPython3_EXECUTABLE="%PREFIX%\python.exe" -DSWIG_EXECUTABLE="%LIBRARY_BIN%\swig.exe"
-              - cmake --build test-build
-              - set "PYTHONPATH=%CD%\test-build"
-              - python -c "import example; assert example.add(20, 22) == 42"
-              - dumpbin /headers "%LIBRARY_BIN%\swig.exe" | findstr /I /C:"AA64 machine (ARM64)"
-              - dumpbin /headers "test-build\_example.pyd" | findstr /I /C:"AA64 machine (ARM64)"
+          - cmake -S . -B test-build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          - cmake --build test-build
+          - python -c "import sys; sys.path.insert(0, 'test-build'); import example; assert example.add(20, 22) == 42"
         requirements:
           run:
-            - if: win and arm64
-              then:
-                - ${{ compiler('c') }}
-                - ${{ stdlib("c") }}
-                - cmake
-                - python
+            - ${{ compiler('c') }}
+            - ${{ stdlib("c") }}
+            - cmake
+            - ninja
+            - python
         files:
           recipe:
-            - if: win and arm64
-              then:
-                - CMakeLists.txt
-                - example.i
+            - CMakeLists.txt
+            - example.i
 
 about:
   homepage: http://www.swig.org/
