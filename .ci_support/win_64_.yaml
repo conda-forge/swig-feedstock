@@ -9,7 +9,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 pcre2:
-- '10.47'
+- '10.49'
 python_min:
 - '3.11'
 target_platform:
